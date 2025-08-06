@@ -1,0 +1,36 @@
+Class: User
+- Attributes: name, injury_type
+- Method: display_info()
+  → Print user's name and injury
+
+Class: Exercise
+- Attributes: name, target_area, description
+- Method: show_details()
+  → Print exercise name, target area, and how to do it
+
+Class: Session
+- Attributes: date, exercise, pain_level
+- Method: display_session()
+  → Print date, exercise name, and pain level
+
+Function: select_exercise()
+→ Create a basic exercise (e.g., "Arm Circles")
+→ Return that exercise
+
+Function: enter_pain_level()
+→ Ask user to enter pain level (0–10)
+→ If input is valid (a number between 0 and 10), return it
+→ If not, show error and ask again
+
+Function: save_session(user, session_list)
+→ Get an exercise using select_exercise()
+→ Get pain level using enter_pain_level()
+→ Create a new Session with date, exercise, and pain level
+→ Add session to the session list
+→ Show message: “Session saved”
+
+Main Program
+→ Make a user with name and injury
+→ Create an empty list to hold sessions
+→ Call save_session() to add a session
+→ Show session details
