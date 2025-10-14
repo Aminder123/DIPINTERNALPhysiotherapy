@@ -289,6 +289,32 @@ class RehabApp:
         tk.Label(window, text=f"💡 Motivation: {motivation}", font=self.FONT_BODY,
                  bg=self.BG4, wraplength=380, fg="yellow").pack(pady=10)
 
+        # -------------------- NEW CODE: Save Data Function --------------------
+        def save_data_to_file():
+            """Save all rehab report details into a text file."""
+            try:
+                import os
+                desktop_path = os.path.join(os.path.expanduser("~"), "Desktop", "rehab_report.txt")
+                with open(desktop_path, "w") as file:
+
+                    file.write(f"Rehab Report for {name} ({year})\n")
+                    file.write("-" * 40 + "\n")
+                    file.write(f"Pain Level: {pain} ({status})\n")
+                    file.write(f"Affected Area(s): {area}\n")
+                    file.write(f"Activity Type: {activity}\n\n")
+                    file.write(f"Recommended Exercises: {rec_exercise}\n")
+                    file.write(f"Diet Tips: {diet}\n")
+                    file.write(f"Recovery Advice: {tips}\n\n")
+                    file.write(f"Motivational Quote: {motivation}\n")
+                    file.write("-" * 40 + "\n")
+                messagebox.showinfo("Saved", "Your report has been saved to 'rehab_report.txt'.")
+            except Exception as e:
+                messagebox.showerror("Error", f"Could not save file:\n{e}")
+
+        # Button to save the rehab data
+        tk.Button(window, text="Save Report", command=save_data_to_file,
+                  bg=self.BUTTON_BG, fg=self.BUTTON_FG, relief="raised", bd=3).pack(pady=10)
+
         # Button to close the program
         tk.Button(window, text="Close", command=window.destroy,
                   bg=self.BUTTON_BG, fg=self.BUTTON_FG, relief="raised", bd=3).pack(pady=10)
